@@ -38,10 +38,16 @@ const officers = [
   { id: "officer5", name: "Prakash Rao", designation: "ACP", userId: "Prakash/ACP" },
 ];
 
+const TIME_BOUND_OPTIONS = [
+  { value: "Priority", label: "Priority" },
+  { value: "Immediate", label: "Immediate" },
+  { value: "Normal", label: "Normal" },
+];
+
 // Mock petition data - in a real app, this would be fetched from an API
 const petitionData = {
   id: "1",
-  petitionNumber: "PTN000012024",
+  petitionNumber: "PTN00001/2025",
   date: "15-04-2024",
   petitionType: "General",
   petitionerName: "Rajesh Kumar",

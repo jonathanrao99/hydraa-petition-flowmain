@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -16,7 +15,7 @@ import StatusBadge from "@/components/common/StatusBadge";
 // Mock petition data - in a real app, this would be fetched from an API
 const petitionData = {
   id: "1",
-  petitionNumber: "PTN000042024",
+  petitionNumber: "PTN00004/2025",
   date: "12-04-2024",
   petitionType: "General",
   petitionerName: "Lakshmi Devi",

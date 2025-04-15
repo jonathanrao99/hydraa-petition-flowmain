@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -13,28 +12,28 @@ import StatusBadge from "@/components/common/StatusBadge";
 const recentPetitions = [
   {
     id: "1",
-    petitionNumber: "PTN000012024",
+    petitionNumber: "PTN00001/2025",
     petitionerName: "Rajesh Kumar",
     date: "15-04-2024",
     status: "Pending",
   },
   {
     id: "2",
-    petitionNumber: "PTN000022024",
+    petitionNumber: "PTN00002/2025",
     petitionerName: "Priya Sharma",
     date: "14-04-2024",
     status: "Assigned",
   },
   {
     id: "3",
-    petitionNumber: "PTN000032024",
+    petitionNumber: "PTN00003/2025",
     petitionerName: "Suresh Reddy",
     date: "13-04-2024",
     status: "Under Investigation",
   },
   {
     id: "4",
-    petitionNumber: "PTN000042024",
+    petitionNumber: "PTN00004/2025",
     petitionerName: "Lakshmi Devi",
     date: "12-04-2024",
     status: "Decision Made",
