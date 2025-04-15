@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -47,7 +46,6 @@ const formSchema = z.object({
   complaintDetails: z.string().min(10, { message: "Complaint details must be at least 10 characters" }),
   respondentInfo: z.string().optional(),
   initialRemark: z.string().optional(),
-  timeBound: z.string(),
   // These will be handled separately
   // encroachmentZone: z.object({
   //   level1: z.string(),
@@ -80,7 +78,6 @@ const NewPetitionForm = () => {
       complaintDetails: "",
       respondentInfo: "",
       initialRemark: "",
-      timeBound: "",
     },
   });
 
@@ -261,34 +258,6 @@ const NewPetitionForm = () => {
                             ))}
                           </SelectContent>
                         </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="timeBound"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Time Bound for Enquiry</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select priority" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            {TIME_BOUND_OPTIONS.map((option) => (
-                              <SelectItem key={option.value} value={option.value}>
-                                {option.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        <FormDescription>
-                          Priority petitions are processed first
-                        </FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}

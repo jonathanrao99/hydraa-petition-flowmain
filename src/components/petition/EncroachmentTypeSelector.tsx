@@ -1,4 +1,3 @@
-
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -33,7 +32,7 @@ const EncroachmentTypeSelector = ({
     <div className="space-y-4">
       <div className="space-y-2">
         <Label>Type of Encroachment</Label>
-        <ScrollArea className="h-[200px] rounded-md border p-2">
+        <ScrollArea className="h-[300px] rounded-md border p-2">
           <div className="space-y-2">
             {types.map((type) => (
               <div key={type.id} className="flex items-center space-x-2">

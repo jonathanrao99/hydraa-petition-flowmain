@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -17,6 +16,18 @@ import { UserCheck, Save, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import PageHeader from "@/components/common/PageHeader";
 import StatusBadge from "@/components/common/StatusBadge";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 // Mock data for officers
 const officers = [
@@ -50,6 +61,21 @@ const petitionData = {
   status: "Pending",
   assignedOfficers: [],
 };
+
+const formSchema = z.object({
+  officerId: z.string().min(1, { message: "Please select an officer" }),
+  timeBound: z.string().min(1, { message: "Please select a time bound" }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+const form = useForm<FormValues>({
+  resolver: zodResolver(formSchema),
+  defaultValues: {
+    officerId: "",
+    timeBound: "",
+  },
+});
 
 const PetitionAssignment = () => {
   const { toast } = useToast();
@@ -224,19 +250,33 @@ const PetitionAssignment = () => {
               />
             </div>
             
-            <div className="space-y-2">
-              <Label>Time Bound</Label>
-              <Select defaultValue={petitionData.timeBound}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Priority">Priority</SelectItem>
-                  <SelectItem value="Immediate">Immediate</SelectItem>
-                  <SelectItem value="Normal">Normal</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+            <FormField
+              control={form.control}
+              name="timeBound"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Time Bound for Enquiry</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select time bound" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {TIME_BOUND_OPTIONS.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormDescription>
+                    Select the time bound for this petition's enquiry
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             
             <Button 
               className="w-full" 
